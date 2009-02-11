@@ -16,7 +16,7 @@
 - (void) updateStatusItem{
 	int days = (int)[lastAccident timeIntervalSinceNow] * -1/DAY;
 	[statusItem setTitle:[NSString stringWithFormat:@"%d", days]];
-	[statusItem setToolTip:[NSString stringWithFormat:@"%d day%@ since the last accident", days, days > 1 ? @"s" : @""]];
+	[statusItem setToolTip:[NSString stringWithFormat:@"%d day%@ since the last accident", days, days > 1 || days == 0 ? @"s" : @""]];
 	[self performSelector:@selector(updateStatusItem) withObject:nil afterDelay:DAY -((int)[lastAccident timeIntervalSinceNow] * -1)%DAY];
 }
 
